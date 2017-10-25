@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+    {% block content %}
+        <br><br>
+            <h1 style="text-align:center">Build a Blog</h1>
+            {% if blogs|length == 0 %}
+            <p>No Blogs Yet</p>
+            {% else %}
+                <ul style="list-style-type:none">
+                    {% for blog in blogs %}
+                    <li><h3><a href='display'>{{blog.title}}</a></h3>
+                        {{blog.body}}
+                        <form action = '/blog' method = "GET" style = "display:block;">
+                            <input type = "hidden" name = "blog-id" value="{{blog.id}}" />
+                        </form>
+                        <br>
+                    </li>
+                    {% endfor %}
+                </ul>
+            {% endif %} 
+    {% endblock %}
